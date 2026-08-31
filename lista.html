@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expedientes - Dra. Vivian</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Consultorio Médico - Dra. Vivian</h1>
+      <nav>
+        <a href="index.html">🔍 Buscar Paciente</a>
+        <a href="agregar.html">➕ Nuevo Registro</a>
+        <a href="lista.html" class="active">📋 Expedientes</a>
+      </nav>
+    </header>
+
+    <section class="card" id="editCard" style="display:none;">
+      <h2>Editar Información del Paciente</h2>
+      <form id="editForm">
+        <input type="hidden" id="editId">
+        <div class="form-group">
+          <label>N° de Expediente:</label>
+          <input type="text" id="editExpediente" required>
+        </div>
+        <div class="form-group">
+          <label>Nombre Completo:</label>
+          <input type="text" id="editNombre" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Edad (Años):</label>
+            <input type="number" id="editEdad" required>
+          </div>
+          <div class="form-group">
+            <label>Género:</label>
+            <select id="editGenero" required>
+              <option value="">SELECCIONAR...</option>
+              <option value="FEMENINO">FEMENINO</option>
+              <option value="MASCULINO">MASCULINO</option>
+              <option value="OTRO">OTRO</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Observaciones / Diagnóstico (Opcional):</label>
+          <textarea id="editDiagnostico" rows="3"></textarea>
+        </div>
+        <div class="button-group">
+          <button type="submit" class="btn btn-primary">Actualizar</button>
+          <button type="button" id="btnCancel" class="btn btn-secondary">Cancelar</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Lista de Pacientes Registrados</h2>
+      <div class="form-group">
+        <input type="text" id="tableFilter" placeholder="FILTRAR LA LISTA POR NOMBRE O EXPEDIENTE...">
+      </div>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Expediente</th>
+              <th>Nombre</th>
+              <th>Edad</th>
+              <th>Género</th>
+              <th>Observaciones / Diagnóstico</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="patientTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

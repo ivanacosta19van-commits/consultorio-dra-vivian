@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscador de Pacientes - Dra. Vivian</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Modal con animación de bienvenida -->
+  <div id="welcomeModal" class="welcome-modal">
+    <div class="welcome-content">
+      <h2>🩺 ¡Bienvenida, Dra. Vivian!</h2>
+      <p>El sistema está listo para gestionar sus expedientes médicos.</p>
+      <button id="closeModal" class="btn btn-primary">Ingresar al panel</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>Consultorio Médico - Dra. Vivian</h1>
+      <nav>
+        <a href="index.html" class="active">🔍 Buscar Paciente</a>
+        <a href="agregar.html">➕ Nuevo Registro</a>
+        <a href="lista.html">📋 Expedientes</a>
+      </nav>
+    </header>
+
+    <section class="card">
+      <h2>Búsqueda de Expediente</h2>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="ESCRIBA EL NOMBRE DEL PACIENTE..." autocomplete="off">
+        <ul id="suggestions" class="suggestions-list"></ul>
+      </div>
+      <div id="searchResult" class="search-result" style="display:none;"></div>
+    </section>
+  </div>
+
+  <script type="module" src="script-buscar.js"></script>
+</body>
+</html>
