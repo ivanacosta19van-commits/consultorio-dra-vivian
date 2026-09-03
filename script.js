@@ -40,6 +40,13 @@ document.querySelectorAll('input[type="text"], textarea').forEach(input => {
   });
 });
 
+// Función auxiliar para extraer números de la cadena del expediente (ej. "EXP-2" -> 2, "10" -> 10)
+function parseExpedienteNum(expediente) {
+  if (!expediente) return 0;
+  const match = expediente.match(/\d+/);
+  return match ? parseInt(match[0], 10) : 0;
+}
+
 onSnapshot(collection(db, "pacientes"), (snapshot) => {
   patients = [];
   snapshot.forEach(d => patients.push({ id: d.id, ...d.data() }));
@@ -48,7 +55,15 @@ onSnapshot(collection(db, "pacientes"), (snapshot) => {
 
 function renderTable(dataList) {
   tableBody.innerHTML = '';
-  dataList.forEach(patient => {
+
+  // Ordenar numéricamente por el número de expediente de menor a mayor
+  const sortedList = [...dataList].sort((a, b) => {
+    const numA = parseExpedienteNum(a.expediente);
+    const numB = parseExpedienteNum(b.expediente);
+    return numA - numB;
+  });
+
+  sortedList.forEach(patient => {
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td><strong>${patient.expediente}</strong></td>
